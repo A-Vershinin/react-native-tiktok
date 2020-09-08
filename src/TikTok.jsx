@@ -1,12 +1,13 @@
 // Core
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { AppLoading } from "expo";
+import { Provider } from "react-redux";
 
 // Screens
 import { Home } from "./screens";
 
 // Utils
-import { api } from "./api";
+import { store } from "./init/store";
 
 const loadAssetsAsync = () => {
   console.log("#--load assets--#");
@@ -14,30 +15,6 @@ const loadAssetsAsync = () => {
 
 export const TikTok = () => {
   const [isAppReady, setIsAppReady] = useState(false);
-  const [data, setData] = useState({
-    movies: [],
-    items: []
-  });
-  const [currentTab, setCurrentTab] = useState(0);
-  const [selected, setSelected] = useState(0);
-
-  useEffect(() => {
-    const fetchData = () => {
-      const getMovies = api.movies.fetch();
-      const getItems = api.items.fetch();
-
-      setData(prev => {
-        return {
-          ...prev,
-          movies: getMovies,
-          items: getItems
-        };
-      });
-    };
-    if (!isAppReady) {
-      fetchData();
-    }
-  }, [setData, isAppReady]);
 
   if (!isAppReady) {
     return (
@@ -49,17 +26,9 @@ export const TikTok = () => {
     );
   }
 
-  const videos = !!currentTab ? data.movies : data.items;
-  const isActive = currentTab === 0;
-
   return (
-    <Home
-      isActive={isActive}
-      currentTab={currentTab}
-      selected={selected}
-      videos={videos}
-      onSelect={setSelected}
-      onChangeTab={setCurrentTab}
-    />
+    <Provider store={store}>
+      <Home />
+    </Provider>
   );
 };

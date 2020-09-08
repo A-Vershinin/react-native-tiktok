@@ -18,16 +18,16 @@ import {
   BottomTabNavigation
 } from "../components";
 
+import { useMovies } from "../bus";
+
 export const Home = props => {
-  const {
-    isActive,
-    currentTab,
-    selected,
-    videos,
-    onSelect,
-    onPause,
-    onChangeTab
-  } = props;
+  const [selected, setSelect] = useState(0);
+  const [currentTab, setCurrentTab] = useState(1);
+  const [pause, setPause] = useState(false);
+  const { isFetching, data: movies, error } = useMovies();
+
+  const videos = !!currentTab ? movies.favories : movies.subscriptions;
+  const isActive = currentTab === 0;
 
   return (
     <>
@@ -39,10 +39,15 @@ export const Home = props => {
       <Container>
         <Header
           isActive={isActive}
-          tab={currentTab}
-          onChangeTab={e => onChangeTab(e)}
+          tab={!currentTab}
+          onChangeTab={e => setCurrentTab(e)}
         />
-        <Hero selected={selected} movies={videos} onSelect={onSelect} />
+        <Hero
+          pause={pause}
+          selected={selected}
+          movies={videos}
+          onSelect={setSelect}
+        />
         <BottomTabNavigation />
       </Container>
     </>

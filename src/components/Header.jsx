@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     position: "absolute",
-    top: 44,
+    top: 54,
     zIndex: 10
   },
   menu: {

@@ -3,6 +3,9 @@ import React from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
+// Utils
+import { THEME } from "../theme";
+
 const icons = {
   LIKE: require("../../assets/icons/like.png"),
   COMMENT: require("../../assets/icons/comment.png"),
@@ -60,7 +63,6 @@ const styles = StyleSheet.create({
     height: "100%",
     paddingBottom: 60,
     justifyContent: "flex-end",
-    backgroundColor: "orange",
     backgroundColor: "transparent"
   },
   menuItem: {
@@ -77,7 +79,7 @@ const styles = StyleSheet.create({
     height: "100%",
     borderRadius: 50,
     borderWidth: 2,
-    borderColor: "#fff",
+    borderColor: THEME.COLOR_3,
     resizeMode: "cover"
   },
   icon: {
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     letterSpacing: -0.1,
     fontWeight: "700",
-    color: "#fff"
+    color: THEME.COLOR_3
   },
   soundBg: {
     width: 50,
@@ -98,7 +100,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 20,
     borderRadius: 50,
-    backgroundColor: "#1f191f"
+    backgroundColor: THEME.COLOR_10
   },
   sound: {
     width: 25,

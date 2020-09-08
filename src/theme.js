@@ -7,5 +7,6 @@ export const THEME = {
   COLOR_6: "#d8d8d8",
   COLOR_7: "rgba(26,26,26,0.6)",
   COLOR_8: "rgba(26,26,26,0)",
-  COLOR_9: "rgba(0, 0, 0, 0.1)"
+  COLOR_9: "rgba(0, 0, 0, 0.1)",
+  COLOR_10: "#1f191f"
 };

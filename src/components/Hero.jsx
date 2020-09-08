@@ -14,7 +14,7 @@ import { Sidebar } from "./Sidebar";
 import { THEME } from "../theme";
 
 export const Hero = props => {
-  const { selected, movies = [], onSelect = () => {} } = props;
+  const { selected, pause, movies = [], onSelect = () => {} } = props;
   const handlePageSelect = e => onSelect(e.nativeEvent.position);
 
   return (
@@ -29,22 +29,13 @@ export const Hero = props => {
             return (
               <View key={m.id}>
                 <VideoPlayer
-                  isPause={false}
+                  isPause={pause}
                   isPlay={selected === idx}
                   poster={m.poster}
                   movie={m.video}
                 />
                 {selected === idx && (
-                  <LinearGradient
-                    style={styles.gradient}
-                    locations={[0, 0.26, 0.6, 1]}
-                    colors={[
-                      THEME.COLOR_8,
-                      THEME.COLOR_7,
-                      THEME.COLOR_7,
-                      THEME.COLOR_8
-                    ]}
-                  >
+                  <View style={styles.gradient}>
                     <View style={styles.center}>
                       <Info user={m.user} />
                       <Sidebar
@@ -53,7 +44,7 @@ export const Hero = props => {
                         music={m.music}
                       />
                     </View>
-                  </LinearGradient>
+                  </View>
                 )}
               </View>
             );
@@ -65,7 +56,8 @@ export const Hero = props => {
 
 const styles = StyleSheet.create({
   block: {
-    flex: 1
+    flex: 1,
+    backgroundColor: "transparent"
   },
   gradient: {
     position: "absolute",
