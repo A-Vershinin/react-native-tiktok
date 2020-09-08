@@ -1,5 +1,6 @@
 {
   "main": "node_modules/expo/AppEntry.js",
+  "author": "Anatoliy Vershinin <vershinin.dev@gmail.com",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -8,12 +9,14 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-community/viewpager": "^4.1.6",
     "expo": "~38.0.8",
     "expo-status-bar": "^1.0.2",
     "react": "~16.11.0",
     "react-dom": "~16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.11.7",
+    "expo-av": "~8.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
